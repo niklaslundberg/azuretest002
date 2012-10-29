@@ -1,0 +1,8 @@
+﻿@model AzureDemo002.Models.MoviesViewModel
+
+<ul>
+	@foreach (var movie in Model.Movies)
+	{
+		<li>@movie.Title</li>
+	}
+</ul>
