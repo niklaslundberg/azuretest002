@@ -7,9 +7,6 @@ namespace AzureDemo002.Controllers
 {
 	public class MovieController : Controller
 	{
-		//
-		// GET: /Movie/
-
 		public ActionResult Index()
 		{
 			MoviesViewModel viewModel;
@@ -36,7 +33,7 @@ namespace AzureDemo002.Controllers
 
 		public ActionResult Fail()
 		{
-			throw new InvalidOperationException("Test");
+			throw new InvalidOperationException("This is a demo exception");
 		}
 
 		public ActionResult Reset()
