@@ -1,34 +1,21 @@
+using System;
+using System.Data.Entity.Migrations;
 using AzureDemo002.Models;
 
 namespace AzureDemo002.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+	internal sealed class Configuration : DbMigrationsConfiguration<MovieContext>
+	{
+		public Configuration()
+		{
+			AutomaticMigrationsEnabled = false;
+		}
 
-    internal sealed class Configuration : DbMigrationsConfiguration<AzureDemo002.Models.MovieContext>
-    {
-        public Configuration()
-        {
-            AutomaticMigrationsEnabled = false;
-        }
+		protected override void Seed(MovieContext context)
+		{
+			var movie = new Movie {Title = string.Format("MyMovie ({0})", DateTime.UtcNow.ToString("o") + " (seed)")};
 
-        protected override void Seed(AzureDemo002.Models.MovieContext context)
-        {
-			context.Movies.Add(new Movie() { Title = "MyMovie" });
-	        //  This method will be called after migrating to the latest version.
-
-	        //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-	        //  to avoid creating duplicate seed data. E.g.
-	        //
-	        //    context.People.AddOrUpdate(
-	        //      p => p.FullName,
-	        //      new Person { FullName = "Andrew Peters" },
-	        //      new Person { FullName = "Brice Lambson" },
-	        //      new Person { FullName = "Rowan Miller" }
-	        //    );
-	        //
-        }
-    }
+			context.Movies.Add(movie);
+		}
+	}
 }
